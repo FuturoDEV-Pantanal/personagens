@@ -1,7 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './styles.css';
 
 export default function CadastroPersonagem( { personagens, carregaPersonagens } ) {
+
+  const [msgErro, setMsgErro] = useState('');
 
   const inputNomeRef = useRef();
   const inputSerieRef = useRef();
@@ -12,6 +14,13 @@ export default function CadastroPersonagem( { personagens, carregaPersonagens } 
     const nome = inputNomeRef.current.value;
     const serie = inputSerieRef.current.value;
     const urlImagem = inputImagemRef.current.value;
+
+    const jaExiste = personagens.some(p => p.nome === nome);
+    if (jaExiste) {
+      // alert("Já foi cadastrado personagem com este nome!");
+      setMsgErro('Já foi cadastrado personagem com este nome!');
+      return;
+    }
 
     const novo = {
        nome: nome,
@@ -24,6 +33,7 @@ export default function CadastroPersonagem( { personagens, carregaPersonagens } 
     inputNomeRef.current.value = '';
     inputSerieRef.current.value = '';
     inputImagemRef.current.value = '';
+    setMsgErro('');
   }
 
   return (
@@ -43,6 +53,7 @@ export default function CadastroPersonagem( { personagens, carregaPersonagens } 
             <input type="url" id="input-imagem" ref={inputImagemRef} placeholder="http://www..." />
           </div>
           <input type="submit" value="Adicionar" className='btn-adicionar' /> 
+          <span className='msg-erro'>{msgErro !== '' ? msgErro : null}</span>
         </form>
     </section>
   )
