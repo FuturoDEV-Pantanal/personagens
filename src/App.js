@@ -5,17 +5,22 @@ import './App.css';
 
 function App() {
 
+  const [carregando, setCarregando] = useState(true);  // loading 
   const [personagens, setPersonagens] = useState([]);
 
   useEffect( () => {
     fetch('dados.json')
       .then(resp => resp.json())
-      .then(dados => setPersonagens(dados))
+      .then(dados => { 
+        setPersonagens(dados);
+        setCarregando(false); 
+      } )
       .catch(erro => console.log(erro));
   }, []);
   
-  if (personagens.length === 0) {  // Se array de personagens vazio
-    return (<h1>Aguarde...</h1>);
+
+  if (carregando) {  // Se estiver carregando, mostrar aguarde...
+    return (<h1>Aguarde...</h1>);  
   }
 
   return (
