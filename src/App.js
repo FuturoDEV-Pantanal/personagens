@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">      
       <ListaPersonagens personagens={personagens} carregaPersonagens={setPersonagens} />
-      <CadastroPersonagem />
+      <CadastroPersonagem personagens={personagens} carregaPersonagens={setPersonagens} />
     </div>
   );
 }
