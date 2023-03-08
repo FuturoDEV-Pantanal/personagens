@@ -1,7 +1,12 @@
 import BlocoPersonagem from '../BlocoPersonagem';
 import './styles.css';
 
-export default function ListaPersonagens( { personagens } ) {
+export default function ListaPersonagens( { personagens, carregaPersonagens } ) {
+
+    function excluirPersonagem(nome) {
+        const filtrados = personagens.filter(p => p.nome !== nome);
+        carregaPersonagens(filtrados);  
+    }
 
   return (
     <section className='personagens-container'>
@@ -9,7 +14,8 @@ export default function ListaPersonagens( { personagens } ) {
         <div className='lista-dados'>
             {
                 personagens.map(pers => <BlocoPersonagem key={pers.nome} 
-                    nome={pers.nome} serie={pers.serie} imagem={pers.imagem} />)
+                    nome={pers.nome} serie={pers.serie} imagem={pers.imagem}
+                    excluirPersonagem={excluirPersonagem} />)
             }
         </div>        
     </section>

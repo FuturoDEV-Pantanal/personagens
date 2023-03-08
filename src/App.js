@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
       
-      <ListaPersonagens personagens={personagens} />
-
+      <ListaPersonagens personagens={personagens} carregaPersonagens={setPersonagens} />
+      
     </div>
   );
 }

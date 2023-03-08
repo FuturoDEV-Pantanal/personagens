@@ -1,6 +1,11 @@
 import './styles.css';
 
-export default function BlocoPersonagem( { nome, serie, imagem } ) {
+export default function BlocoPersonagem( { nome, serie, imagem, excluirPersonagem } ) {
+
+  // function handleExcluirPersonagem() {
+  //   excluirPersonagem(nome);
+  // }
+
   return (
     <div className='personagem-container'>
       <div className='personagem-foto'>
@@ -11,7 +16,7 @@ export default function BlocoPersonagem( { nome, serie, imagem } ) {
         <span className='personagem-info-serie'>{serie}</span>
       </div>
       <div className='personagem-botoes'>
-        <button>Excluir</button>
+        <button onClick={ () => excluirPersonagem(nome) } >Excluir</button>
       </div>
     </div>
   )
