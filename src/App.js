@@ -9,7 +9,6 @@ function App() {
   useEffect( () => {
     fetch('dados.json')
       .then(resp => resp.json())
-      .then(dados => new Promise(resolve => setTimeout(() => resolve(dados), 5000)))
       .then(dados => setPersonagens(dados))
       .catch(erro => console.log(erro));
   }, []);
