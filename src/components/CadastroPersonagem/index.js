@@ -20,6 +20,10 @@ export default function CadastroPersonagem( { personagens, carregaPersonagens } 
     };
     const atualizado = [...personagens, novo];
     carregaPersonagens(atualizado);
+
+    inputNomeRef.current.value = '';
+    inputSerieRef.current.value = '';
+    inputImagemRef.current.value = '';
   }
 
   return (
@@ -36,7 +40,7 @@ export default function CadastroPersonagem( { personagens, carregaPersonagens } 
           </div>
           <div className='form-grupo'>
             <label htmlFor="input-imagem">URL da Imagem: </label>
-            <input type="text" id="input-imagem" ref={inputImagemRef} placeholder="http://www..." />
+            <input type="url" id="input-imagem" ref={inputImagemRef} placeholder="http://www..." />
           </div>
           <input type="submit" value="Adicionar" className='btn-adicionar' /> 
         </form>
