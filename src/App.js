@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ListaPersonagens from './components/ListaPersonagens';
+import CadastroPersonagem from './components/CadastroPersonagem';
 import './App.css';
 
 function App() {
@@ -18,10 +19,9 @@ function App() {
   }
 
   return (
-    <div className="App">
-      
+    <div className="App">      
       <ListaPersonagens personagens={personagens} carregaPersonagens={setPersonagens} />
-      
+      <CadastroPersonagem />
     </div>
   );
 }
