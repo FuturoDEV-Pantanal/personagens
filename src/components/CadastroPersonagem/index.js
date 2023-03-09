@@ -15,6 +15,12 @@ export default function CadastroPersonagem( { personagens, carregaPersonagens } 
     const serie = inputSerieRef.current.value;
     const urlImagem = inputImagemRef.current.value;
 
+    const contemNros = /\d/.test(nome);
+    if (contemNros) {
+      setMsgErro('Nome não pode conter números!');
+      return;
+    }
+
     const jaExiste = personagens.some(p => p.nome === nome);
     if (jaExiste) {
       // alert("Já foi cadastrado personagem com este nome!");
